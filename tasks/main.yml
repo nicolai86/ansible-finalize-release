@@ -1,0 +1,14 @@
+---
+- name: move build directory to releases directory
+  shell: "mv {{ build_path }} {{ release_path }}"
+
+- name: update the current symlink to most recent release
+  file:
+    src: "{{ release_path }}"
+    dest: "{{ current_path }}"
+    state: "link"
+    force: "yes"
+
+- name: cleanup old releases
+  shell: ls -dt {{ releases_path }}/* | tail -n +6 | xargs rm -fr
+  when: cleanup
