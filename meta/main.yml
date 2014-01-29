@@ -14,5 +14,4 @@ galaxy_info:
       - saucy
   categories:
     - web
-dependencies:
-  - nicolai86.prepare-release
+dependencies: []
