@@ -9,3 +9,6 @@ release_path: "{{ releases_path }}/{{ deployment.timestamp }}"
 
 # path to symlink the new deploy to
 current_path: "{{ deploy_to }}/current"
+
+# how many previous releases to keep around
+keep_releases: 5
