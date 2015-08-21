@@ -8,6 +8,8 @@
     dest: "{{ current_path }}"
     state: "link"
     force: "yes"
+    owner: "{{ user | default() }}"
+    group: "{{ group | default() }}"
 
 - name: cleanup old releases
   shell: "ls -1d [0-9]* | sort -rn | tail -n $((`ls -1d [0-9]* | sort -rn | wc -l` > {{ keep_releases }} ? `ls -1d [0-9]* | sort -rn | wc -l` - {{ keep_releases }} : 0)) | xargs rm -rf {}"
